@@ -17,4 +17,12 @@
   <link href="<?= base_url(); ?>assets/css/material-dashboard.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url(); ?>assets/demo/demo.css" rel="stylesheet" />
+  <style>
+.btn-group-xs > .btn, .btn-xs {
+  padding: .25rem .4rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+</style>
 </head>

@@ -22,9 +22,9 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="<?= base_url()?>page/manajemensoal">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Manajemen Soal</p>
             </a>
           </li>
           <li class="nav-item ">
