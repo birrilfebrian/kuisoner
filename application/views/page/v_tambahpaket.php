@@ -10,39 +10,27 @@
                                     <ul class="breadcrumb float-xl-left">
                                         <li class="nav-item">
                                         <h3 class="card-title">Paket Soal</h3>
-                                        <a href="<?= base_url() ?>page/tambahpaket"><button class="btn btn-sm btn-primary" style="background-color:#1a2035">Tambah paket</button></a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-primary">
-                                                <th>#</th>
-                                                <th>Umur</th>
-                                                <th>Jenis</th>
-                                                <th width="15%">Aksi</th>
-                                            </thead>
-                                            <tbody>
-                                            <?php $no=1; foreach($listpaket as $lp){ ?>
-                                                <tr>
-                                                    <td><?= $no ?></td>
-                                                    <td><?= $lp->umur ?> Tahun</td>
-                                                    <td>
-                                                        <?php if($lp->jenis == 0){
-                                                            echo 'KPSP';
-                                                        }elseif($lp->jenis == 1){
-                                                            echo 'TDD';
-                                                        }else{
-                                                            echo 'TDL';
-                                                        } ?>
-                                                    </td>
-                                                    <td><a href="<?= base_url(); ?>page/soal/<?= $lp->id_paket ?>"><button class="btn btn-sm btn-info"><i class="fa fa-search" aria-hidden="true"></i></button></a></td>
-                                                </tr>
-                                            <?php $no++; } ?>
-                                            </tbody>
-                                        </table>
+                                <?= $this->session->flashdata('pesan') ?>
+                                <br>
+                                <form action="<?= base_url() ?>page/aksipaket" method="post">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Soal</label>
+                                        <textarea required class="form-control" id="exampleFormControlTextarea1" name="soal" rows="3"></textarea>
                                     </div>
+                                    <div class="form-goup">
+                                    <select name="jenis" class="form-control">
+                                        <option selected>...</option>
+                                        <option value="0">KPSP</option>
+                                        <option value="1">TDD</option>
+                                        <option valuue="2">TDL</option>
+                                    </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                                 </div>
                             </div>
                         </div>

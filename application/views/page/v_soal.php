@@ -10,7 +10,7 @@
                                     <ul class="breadcrumb float-xl-left">
                                         <li class="nav-item">
                                         <h3 class="card-title">Paket Soal</h3>
-                                        <a href="<?= base_url() ?>page/tambahpaket"><button class="btn btn-sm btn-primary" style="background-color:#1a2035">Tambah paket</button></a>
+                                        <a href="<?= base_url() ?>page/tambahsoal?idp=<?= $id ?>"><button class="btn btn-sm btn-primary" style="background-color:#1a2035">Tambah paket</button></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -19,27 +19,25 @@
                                         <table class="table">
                                             <thead class="text-primary">
                                                 <th>#</th>
-                                                <th>Umur</th>
-                                                <th>Jenis</th>
+                                                <th>Soal</th>
                                                 <th width="15%">Aksi</th>
                                             </thead>
                                             <tbody>
-                                            <?php $no=1; foreach($listpaket as $lp){ ?>
+                                            <?php
+                                             if(!empty($listsoal)){
+                                                $no=1; 
+                                                foreach($listsoal as $ls){ ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $lp->umur ?> Tahun</td>
-                                                    <td>
-                                                        <?php if($lp->jenis == 0){
-                                                            echo 'KPSP';
-                                                        }elseif($lp->jenis == 1){
-                                                            echo 'TDD';
-                                                        }else{
-                                                            echo 'TDL';
-                                                        } ?>
-                                                    </td>
-                                                    <td><a href="<?= base_url(); ?>page/soal/<?= $lp->id_paket ?>"><button class="btn btn-sm btn-info"><i class="fa fa-search" aria-hidden="true"></i></button></a></td>
+                                                    <td><?= $ls->soal ?></td>
+                                                    <td><a href="<?= base_url(); ?>page/soal"><button class="btn btn-sm btn-info"><i class="fa fa-search" aria-hidden="true"></i></button></a></td>
                                                 </tr>
-                                            <?php $no++; } ?>
+                                            <?php $no++;
+                                                }
+                                            }else{
+                                                echo '<td class="text-center" style="font-size:1rem" colspan="4">Silahkan Tambah Soal</td>';
+                                            } 
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>

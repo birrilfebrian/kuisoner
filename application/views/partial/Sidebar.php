@@ -17,8 +17,8 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <i class="material-icons">supervisor_account</i>
+              <p>Manajemen Anak</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -27,7 +27,7 @@
               <p>Manajemen Soal</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <!-- <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
               <p>Typography</p>
@@ -50,8 +50,8 @@
               <i class="material-icons">notifications</i>
               <p>Notifications</p>
             </a>
-          </li>
-          <!-- <li class="nav-item active-pro ">
+          </li> 
+          <li class="nav-item active-pro ">
                 <a class="nav-link" href="./upgrade.html">
                     <i class="material-icons">unarchive</i>
                     <p>Upgrade to PRO</p>

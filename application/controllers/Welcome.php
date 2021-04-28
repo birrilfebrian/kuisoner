@@ -42,7 +42,7 @@ class Welcome extends CI_Controller {
 		if($user == "admin"){
 			if($password == "admin"){
 				$this->session->set_userdata('username',$user);
-				redirect('dashboard');
+				redirect('welcome/dashboard');
 			}else{
 				$this->session->set_flashdata('pesan','<div class="text-center w-full p-t-25 p-b-10" >Password Salah!</div>');
 				redirect('welcome');
