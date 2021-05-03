@@ -42,17 +42,17 @@ public function index_post(){
                 
                 $insert = $this->db->insert('tb_user', $data);
 
-                $digits = 2;
-                $num = rand(pow(10, $digits-1), pow(10, $digits)-1);
-                $tokennya = uniqid(true);
-                $user_token = [
-                    'email' => $email,
-                    'token' => $tokennya,
-                    'v_num' => $num,
-                    'date_created' => $time
-                ];
+                // $digits = 2;
+                // $num = rand(pow(10, $digits-1), pow(10, $digits)-1);
+                // $tokennya = uniqid(true);
+                // $user_token = [
+                //     'email' => $email,
+                //     'token' => $tokennya,
+                //     'v_num' => $num,
+                //     'date_created' => $time
+                // ];
 
-                $cek2 = $this->db->insert('user_token', $user_token);
+                // $cek2 = $this->db->insert('user_token', $user_token);
                 $kirim = $this->_sendEmail($tokennya, $email, 'verify');
                 
 
@@ -224,7 +224,7 @@ public function index_post(){
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#000066"><a href="'.base_url().'api/registerakun/verify?token='.$token.'&email='.$email.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000066; display: inline-block;">Confirm Account</a></td>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#000066"><a href="'.base_url().'api/registerakun/verify?email='.$email.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000066; display: inline-block;">Confirm Account</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -262,29 +262,20 @@ public function index_post(){
 
     public function verify_get(){
         $email = $this->get('email');
-        $token = $this->get('token');
+        // $token = $this->get('token');
 
         $reseller = $this->db->get_where('tb_user', ['email' => $email])->row_array();
         if($reseller) {
-            $tokennya = $this->db->get_where('user_token', ['token' => $token])->row_array();
-            if($tokennya) {
-                $this->db->set('is_aktif', 1);
-                $this->db->where('email', $email);
-                $this->db->update('tb_user');
+            $this->db->set('is_aktif', 1);
+            $this->db->where('email', $email);
+            $this->db->update('tb_user');
 
-                $this->db->delete('user_token', ['email' => $email]);
 
-                $response = [
-                    'status' => true,
-                    'pesan' => 'Akun anda sudah di VERIFIKASI',
-                ];
-                // redirect('auth/cek');
-            } else {
-                $response = [
-                    'status' => false,
-                    'pesan' => 'Token tidak valid',
-                ];
-            }
+            $response = [
+                'status' => true,
+                'pesan' => 'Akun anda sudah di VERIFIKASI',
+            ];
+            // redirect('auth/cek');
         } else {
             $response = [
                 'status' => false,
