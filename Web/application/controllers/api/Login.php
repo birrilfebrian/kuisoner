@@ -31,7 +31,7 @@ class Login extends REST_Controller
     } else {
       $output = $this->UserModel->user_login($this->input->post('username'), $this->input->post('password'));
       if (!empty($output) and $output != FALSE) {
-        if ($output->is_active == 0) {
+        if ($output->status == 0) {
           $message = [
             'status' => false,
             'data' => "Maaf Akun Anda Tidak Aktif",
