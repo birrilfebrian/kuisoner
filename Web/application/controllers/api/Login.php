@@ -31,7 +31,7 @@ class Login extends REST_Controller
     } else {
       $output = $this->UserModel->user_login($this->input->post('username'), $this->input->post('password'));
       if (!empty($output) and $output != FALSE) {
-        if ($output->status == 0) {
+        if ($output->is_aktif == 0) {
           $message = [
             'status' => false,
             'data' => "Maaf Akun Anda Tidak Aktif",
@@ -43,21 +43,21 @@ class Login extends REST_Controller
           $this->db->update('tb_user');
           //generate
           $token_data['id_user'] = $output->id_user;
-          $token_data['nama'] = $output->nama;
           $token_data['username'] = $output->username;
+          $token_data['nama'] = $output->nama;
           $token_data['email'] = $output->email;
-          $token_data['foto_pengguna'] = $output->foto_pengguna;
-          $token_data['status'] = $output->status;
+          $token_data['foto'] = $output->foto;
           $token_data['created_at'] = $output->created_at;
+          $token_data['is_aktif'] = $output->is_aktif;
 
           $return_data = [
             'id_user' => $output->id_user,
-            'nama' => $output->nama,
             'username' => $output->username,
+            'nama' => $output->nama,
             'email' => $output->email,
-            'foto_pengguna' => $output->foto_pengguna,
-            'status' => $output->status,
+            'foto' => $output->foto,
             'created_at' => $output->created_at,
+            'is_aktif' => $output->is_aktif,
             'pesan' => 'Selamat Datang',
           ];
           $message = [
