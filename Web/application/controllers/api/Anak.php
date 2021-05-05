@@ -54,7 +54,7 @@ class Anak extends REST_Controller {
 
     $query = $this->db->query('SELECT * FROM tb_anak where id_user ="'.$this->get('id_user').'"');
 
-    if($query->num_rows > 0){
+    if($query->num_rows() > 0){
       $response = [
         'status' => true,
         'data'   => $query->result_array()
