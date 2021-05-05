@@ -39,8 +39,9 @@ class Login extends REST_Controller
           $this->response($message, REST_Controller::HTTP_OK);
         } else {
           $id =  $output->id_user;
-          $this->db->where('id_user', $id);
-          $this->db->update('tb_user');
+          // $this->db->set('token', $this->input->post('token'));
+          // $this->db->where('id_user', $id);
+          // $this->db->update('tb_user');
           //generate
           $token_data['id_user'] = $output->id_user;
           $token_data['username'] = $output->username;
