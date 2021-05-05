@@ -14,16 +14,23 @@ class Registerakun extends REST_Controller {
   }
 
 public function index_post(){
+    $username = $this->post('username');
         $password = md5($this->input->post('password'));
         $email = $this->post('email');
         $kode = $this->Kode->buatkode('id_user', 'tb_user', 'USR' , '4');
         date_default_timezone_set("Asia/Jakarta");
         $time =  Date('Y-m-d');
-        $cek = $this->db->get_where('tb_user', ['email' => $email])->row_array();
+        $cek = $this->db->get_where('tb_user', ['username' => $username])->row_array();
+        $cek2 = $this->db->get_where('tb_user', ['email' => $email])->row_array();
 
         
 
         if ($cek > 0){
+            $response = [
+                'status' => false,
+                'message' => 'Username Telah Digunakan',
+            ];
+        }else if ($cek2 > 0){
             $response = [
                 'status' => false,
                 'message' => 'Email Telah Digunakan',
@@ -31,7 +38,7 @@ public function index_post(){
         }else{
             $data = array(
                 'id_user '      => $kode,
-                'username'      => $this->post('username'),
+                'username'      => $username,
                 'password'      => $password,
                 'nama'          => $this->post('nama'),
                 'email'         => $email,
@@ -53,12 +60,13 @@ public function index_post(){
                 // ];
 
                 // $cek2 = $this->db->insert('user_token', $user_token);
-                $kirim = $this->_sendEmail($tokennya, $email, 'verify');
+                // $kirim = $this->_sendEmail($tokennya, $email, 'verify');
+                $kirim = $this->_sendEmail($email, 'verify');
                 
 
                 $response = [
                     'status' => true,
-                    'pesan' => 'Pendaftaran Akun Berhasil',
+                    'message' => 'Pendaftaran Akun Berhasil',
                 ];
         }
         $this->response($response, 200);
