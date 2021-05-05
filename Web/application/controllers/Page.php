@@ -23,6 +23,20 @@ class Page extends CI_Controller {
 			$this->load->view('partial/footer');
 		}
 	}
+	public function manajemenuser()
+	{
+		if(empty($this->session->userdata('username'))){
+			redirect('welcome');
+		}else{
+			$data['listuser'] = $this->db->query('SELECT * FROM tb_user')->result();
+			
+			$this->load->view('partial/header');
+			$this->load->view('partial/sidebar');
+			$this->load->view('partial/navbar');
+			$this->load->view('page/v_manajemenusser',$data);
+			$this->load->view('partial/footer');
+		}
+	}
 		public function soal($page=""){
 		if(empty($this->session->userdata('username'))){
 			redirect('welcome');
@@ -66,22 +80,26 @@ class Page extends CI_Controller {
 			$umur = $this->input->post('umur');
 			$jenis = $this->input->post('jenis');
 			$kodepkt = $this->Kode->buatkode('id_paket','tb_paket','PKT','3');
-
-			$data = array(
-				'id_paket' 	=> $kodepkt,
-				'jenis'		=> $jenis,
-				'umur' 		=> $umur
-			);
-			$query = $this->db->insert('tb_paket', $data);
-
+			if($jenis == "error"){
+				$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Jenisnya Pilih Woi!</div>');
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			}else{
+				$data = array(
+					'id_paket' 	=> $kodepkt,
+					'jenis'		=> $jenis,
+					'umur' 		=> $umur
+				);
+				$query = $this->db->insert('tb_paket', $data);
+	
 				if($query){
 					$this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">Data Berhasil Ditambahkan!</div>');
 					header('Location: ' . $_SERVER['HTTP_REFERER']);
 				}else{
 					$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Terjadi Error Harap Hubungi Admin</div>');
 					header('Location: ' . $_SERVER['HTTP_REFERER']);
-				}
+				}	
 			}
+		}
 		public function aksisoal(){
 
 			$umur = $this->input->post('umur');

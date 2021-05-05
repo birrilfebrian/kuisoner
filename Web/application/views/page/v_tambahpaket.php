@@ -18,18 +18,19 @@
                                 <br>
                                 <form action="<?= base_url() ?>page/aksipaket" method="post">
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Soal</label>
-                                        <textarea required class="form-control" id="exampleFormControlTextarea1" name="soal" rows="3"></textarea>
+                                        <label for="exampleInputPassword1">Umur</label>
+                                        <input type="number" required class="form-control" id="exampleFormControlTextarea1" name="umur">
                                     </div>
                                     <div class="form-goup">
                                     <select name="jenis" class="form-control">
-                                        <option selected>...</option>
+                                        <option value="error" selected>...</option>
                                         <option value="0">KPSP</option>
                                         <option value="1">TDD</option>
                                         <option valuue="2">TDL</option>
                                     </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="<?= base_url()?>page/manajemensoal" ><button type="button" class="btn btn-primary">Kembali</button></a>
                                 </form>
                                 </div>
                             </div>

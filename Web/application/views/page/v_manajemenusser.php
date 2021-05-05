@@ -9,8 +9,7 @@
                                 <div class="card-header card-header-primary">
                                     <ul class="breadcrumb float-xl-left">
                                         <li class="nav-item">
-                                        <h3 class="card-title">Paket Soal</h3>
-                                        <a href="<?= base_url() ?>page/tambahsoal?idp=<?= $id ?>"><button class="btn btn-sm btn-primary" style="background-color:#1a2035">Tambah Soal</button></a>
+                                        <h3 class="card-title">Data User</h3>
                                         </li>
                                     </ul>
                                 </div>
@@ -19,25 +18,34 @@
                                         <table class="table">
                                             <thead class="text-primary">
                                                 <th>#</th>
-                                                <th>Soal</th>
-                                                <th width="15%">Aksi</th>
+                                                <th>Username</th>
+                                                <th>Password</th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
+                                                <th>Foto</th>
+                                                <th>Tanggal Daftar</th>
+                                                <th>Statur</th>
                                             </thead>
                                             <tbody>
-                                            <?php
-                                             if(!empty($listsoal)){
-                                                $no=1; 
-                                                foreach($listsoal as $ls){ ?>
+                                            <?php $no=1; foreach($listuser as $lu){ ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $ls->soal ?></td>
-                                                    <td><a href="#"><button class="btn btn-sm btn-info"><i class="fa fa-search" aria-hidden="true"></i></button></a></td>
+                                                    <td><?= $lu->username ?></td>
+                                                    <td><?= $lu->password ?></td>
+                                                    <td><?= $lu->nama ?></td>
+                                                    <td><?= $lu->email ?></td>
+                                                    <td><?= $lu->foto ?></td>
+                                                    <td><?= tanggal($lu->created_at) ?></td>
+                                                    <td>
+                                                        <?php 
+                                                        if($lu->is_aktif == 1){
+                                                            echo 'Terverifikasi';
+                                                        }else{
+                                                            echo 'Belum Diverifikasi';
+                                                        } ?>
+                                                    </td>
                                                 </tr>
-                                            <?php $no++;
-                                                }
-                                            }else{
-                                                echo '<td class="text-center" style="font-size:1rem" colspan="4">Silahkan Tambah Soal</td>';
-                                            } 
-                                            ?>
+                                            <?php $no++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
