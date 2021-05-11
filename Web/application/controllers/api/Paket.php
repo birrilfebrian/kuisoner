@@ -39,7 +39,7 @@ class Paket extends REST_Controller {
         }else{
           $response = [
             'status' => false,
-            'data'   => 'asdas'
+            'data'   => 'gagal'
           ];
         }
       }else{
