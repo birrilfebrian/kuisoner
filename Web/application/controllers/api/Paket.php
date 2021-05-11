@@ -34,7 +34,10 @@ class Paket extends REST_Controller {
             );
             $cc = $this->db->insert('tb_hasil', $datah);
         if($cc){
-          $query['jumlah_soal'] = $cek['jumlah_soal'];
+          for($i=0;$i<sizeof($query);$i++)
+        {
+          $query[$i]['jumlah_soal'] = $cek['jumlah_soal'];
+        }
           $response = [
             'status' => true,
             'data'   => $query,
