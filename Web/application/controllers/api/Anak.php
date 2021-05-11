@@ -29,6 +29,7 @@ class Anak extends REST_Controller {
       'id_user'       =>$this->post('id_user'),
       'nama_anak'     =>$this->post('nama_anak'),
       'tanggal_lahir' =>$tgl_lahir,
+      'tanggal_lahir' =>$this->post('jenis_kelamin'),
       'umur'          => $umur
     );  
 
@@ -68,6 +69,22 @@ class Anak extends REST_Controller {
 
     $this->response($response, 200);
 
+  }
+
+  public function riwayatanak_get(){
+    $qq = $this->db->query('SELECT * FROM tb_hasil where id_anak = "'.$this->get('id_anak').'"');
+
+    if($qq->num_rows() > 0){
+      $response = [
+        'status' => true,
+        'data'   => $qq->result()
+      ];
+    }else{
+      $response = [
+        'status' => false,
+        'data'   => 'tidak ditemukan data'
+      ];
+    }
   }
 
 }
