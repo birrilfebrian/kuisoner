@@ -86,10 +86,10 @@ public function index_post(){
     $this->email->set_newline("\r\n"); 
     $this->load->library('email', $config);   
 
-    $from = "Jogja Medianet";
+    $from = "Tes Anak";
     $subject = "This The Te";
     $data = array();
-    $this->email->from($from. 'Jogja Medianet');
+    $this->email->from($from. 'Tes Anak');
     $this->email->to($email);
     $this->email->subject($subject);
         $this->email->message('
