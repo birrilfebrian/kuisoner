@@ -37,6 +37,7 @@ class Paket extends REST_Controller {
           for($i=0;$i<sizeof($query);$i++)
         {
           $query[$i]['jumlah_soal'] = $cek['jumlah_soal'];
+          $query[$i]['id_hasil'] = $kodehasil;
         }
           $response = [
             'status' => true,

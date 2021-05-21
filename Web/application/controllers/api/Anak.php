@@ -71,20 +71,24 @@ class Anak extends REST_Controller {
 
   }
 
-  public function riwayatanak_get(){
-    $qq = $this->db->query('SELECT * FROM tb_hasil where id_anak = "'.$this->get('id_anak').'"');
+  public function detailanak_get(){
 
-    if($qq->num_rows() > 0){
+    $query = $this->db->query('SELECT * FROM tb_anak where id_anak ="'.$this->get('id_anak').'"');
+
+    if($query->num_rows() > 0){
       $response = [
         'status' => true,
-        'data'   => $qq->result()
+        'data'   => $query->result_array()
       ];
     }else{
       $response = [
         'status' => false,
-        'data'   => 'tidak ditemukan data'
+        'message' => 'Belum ada anak'
       ];
     }
+
+    $this->response($response, 200);
+
   }
 
 }

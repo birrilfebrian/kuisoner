@@ -38,9 +38,9 @@ public function index_post(){
         }else{
             $data = array(
                 'id_user '      => $kode,
+                'nama'          => $this->post('nama'),
                 'username'      => $username,
                 'password'      => $password,
-                'nama'          => $this->post('nama'),
                 'email'         => $email,
                 'foto'          => 'default.jpeg',
                 'created_at'    => $time,
