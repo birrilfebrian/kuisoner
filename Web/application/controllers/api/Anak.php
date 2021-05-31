@@ -29,7 +29,7 @@ class Anak extends REST_Controller {
       'id_user'       =>$this->post('id_user'),
       'nama_anak'     =>$this->post('nama_anak'),
       'tanggal_lahir' =>$tgl_lahir,
-      'tanggal_lahir' =>$this->post('jenis_kelamin'),
+      'jenis_kelamin' =>$this->post('jenis_kelamin'),
       'umur'          => $umur
     );  
 
@@ -43,7 +43,7 @@ class Anak extends REST_Controller {
     }else{
         $response = [
           'status' => false,
-          'message' => 'Gagal, Hubungi admin!',
+          'message' => 'Gagal menambahkan anak!',
         ];
     }
 

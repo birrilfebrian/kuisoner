@@ -71,7 +71,7 @@ public function index_post(){
         }
         $this->response($response, 200);
     }
-    private function _sendEmail($token ,$email ,$type){
+    private function _sendEmail($email ,$type){
         
     $config = array();
     $config['protocol'] = 'smtp';
