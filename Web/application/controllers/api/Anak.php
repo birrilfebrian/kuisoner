@@ -90,7 +90,7 @@ class Anak extends REST_Controller {
     $this->response($response, 200);
 
   }
-  public function detailanak_get(){
+  public function riwayat_get(){
 
     $query = $this->db->query('SELECT * FROM tb_anak 
     JOIN tb_hasil ON tb_anak.id_anak = tb_hasil.id_anak
