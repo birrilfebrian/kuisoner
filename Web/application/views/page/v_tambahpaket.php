@@ -18,8 +18,15 @@
                                 <br>
                                 <form action="<?= base_url() ?>page/aksipaket" method="post">
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Umur</label>
-                                        <input type="number" required class="form-control" id="exampleFormControlTextarea1" name="umur">
+                                        <label style="color:white" for="exampleInputPassword1">Umur(bulan)</label> <br><br>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <input type="number" placeholder="Umur Awal" required class="form-control" id="exampleFormControlTextarea1" name="umurawal">
+                                            </div>
+                                            <div class="col-3">
+                                                <input type="number" placeholder="Umur Akhir" required class="form-control" id="exampleFormControlTextarea1" name="umurakhir">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-goup">
                                     <select name="jenis" class="form-control">

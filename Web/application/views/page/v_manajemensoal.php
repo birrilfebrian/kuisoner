@@ -27,7 +27,7 @@
                                             <?php $no=1; foreach($listpaket as $lp){ ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $lp->umur ?> Tahun</td>
+                                                    <td><?= $lp->umurawal ?> s/d <?= $lp->umurakhir ?> Bulan</td>
                                                     <td>
                                                         <?php if($lp->jenis == 0){
                                                             echo 'KPSP';
