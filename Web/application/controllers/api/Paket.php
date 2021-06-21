@@ -15,7 +15,6 @@ class Paket extends REST_Controller {
   public function index_post(){
       $jenis = $this->post('jenis');
       $id_anak = $this->post('id_anak');
-      $kodehasil = $this->Kode->buatkode('id_hasil', 'tb_hasil', 'HS', '3');
 
       $query = $this->db->query('SELECT * FROM tb_paket 
       join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
@@ -25,19 +24,10 @@ class Paket extends REST_Controller {
       Where tb_paket.jenis="'.$jenis.'"  and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->row_array();
       
       if($cek['jumlah_soal'] > 0){
-        $datah = array(
-              'id_hasil' => $kodehasil,
-              'id_anak'  => $id_anak,
-              'id_user'  => $this->post('id_user'),
-              'total_point' => 0,
-              'date'    => date('Y-m-d')
-            );
-            $cc = $this->db->insert('tb_hasil', $datah);
         if($cc){
           for($i=0;$i<sizeof($query);$i++)
         {
           $query[$i]['jumlah_soal'] = $cek['jumlah_soal'];
-          $query[$i]['id_hasil'] = $kodehasil;
         }
           $response = [
             'status' => true,
@@ -59,6 +49,54 @@ class Paket extends REST_Controller {
       $this->response($response, 200);
 
   }
+
+  public function hasil1_post(){
+    $jenis = $this->post('jenis');
+    $id_anak = $this->post('id_anak');
+    $kodehasil = $this->Kode->buatkode('id_hasil', 'tb_hasil', 'HS', '3');
+
+    $query = $this->db->query('SELECT * FROM tb_paket 
+    join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
+    Where tb_paket.jenis="'.$jenis.'" and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->result_array();
+    $cek = $this->db->query('SELECT count(tb_soal.id_soal) as jumlah_soal, tb_paket.id_paket, tb_paket.jenis, tb_soal.id_soal, tb_soal.soal FROM tb_paket 
+    join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
+    Where tb_paket.jenis="'.$jenis.'"  and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->row_array();
+    
+    if($cek['jumlah_soal'] > 0){
+      $datah = array(
+            'id_hasil' => $kodehasil,
+            'id_anak'  => $id_anak,
+            'id_user'  => $this->post('id_user'),
+            'total_point' => 0,
+            'date'    => date('Y-m-d')
+          );
+          $cc = $this->db->insert('tb_hasil', $datah);
+      if($cc){
+        for($i=0;$i<sizeof($query);$i++)
+      {
+        $query[$i]['jumlah_soal'] = $cek['jumlah_soal'];
+        $query[$i]['id_hasil'] = $kodehasil;
+      }
+        $response = [
+          'status' => true,
+          'data'   => $query,
+        ];
+      }else{
+        $response = [
+          'status' => false,
+          'data'   => 'gagal'
+        ];
+      }
+    }else{
+      $response = [
+        'status' => false,
+        'message' => "gagal"
+      ];
+    }
+
+    $this->response($response, 200);
+
+}
 
   public function dhasil_post(){
     $kodedhasil = $this->Kode->buatkode('id_detail_hasil', 'tb_detail_hasil', 'DHS', '3');

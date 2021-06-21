@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <div class="form-goup">
-                                    <select name="jenis" class="form-control">
+                                    <select style="color:black" name="jenis" class="form-control">
                                         <option value="error" selected>...</option>
                                         <option value="0">KPSP</option>
                                         <option value="1">TDD</option>
