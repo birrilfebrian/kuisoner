@@ -19,10 +19,10 @@ class Paket extends REST_Controller {
 
       $query = $this->db->query('SELECT * FROM tb_paket 
       join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
-      Where tb_paket.jenis="'.$jenis.'" and tb_paket.umur=(select umur from tb_anak where id_anak = "'.$id_anak.'" ) ')->result_array();
+      Where tb_paket.jenis="'.$jenis.'" and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->result_array();
       $cek = $this->db->query('SELECT count(tb_soal.id_soal) as jumlah_soal, tb_paket.id_paket, tb_paket.jenis, tb_soal.id_soal, tb_soal.soal FROM tb_paket 
       join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
-      Where tb_paket.jenis="'.$jenis.'" and tb_paket.umur=(select umur from tb_anak where id_anak = "'.$id_anak.'" ) ')->row_array();
+      Where tb_paket.jenis="'.$jenis.'"  and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->row_array();
       
       if($cek['jumlah_soal'] > 0){
         $datah = array(
@@ -111,6 +111,25 @@ class Paket extends REST_Controller {
         'message' => 'Gagal upload tb_detail'
       ];
     }
+    $this->response($response, 200);
+  }
+  public function hasil_get(){
+    $id_hasil = $this->get('id_hasil');
+
+    $query = $this->db->query('SELECT total_point from tb_hasil where id_hasil = "'.$id_hasil.'"')->row_array();
+
+    if(($query['total_point'] > 8.00 && $query['total_point'] <= 10.00)){
+      $pesan = "Anak Sesuai Dengan Tahapan";
+    }elseif(($query['total_point'] > 6.00 && $query['total_point'] <= 8.00)){
+      $pesan = "Anak Penyimpangan Meragukan";
+    }elseif($query['total_point'] < 6.00){
+      $pesan = "Kemungkinan Penyimpangan";
+    }
+
+      $response = [
+        'status' => true,
+        'pesan' => $pesan
+      ];
     $this->response($response, 200);
   }
 }

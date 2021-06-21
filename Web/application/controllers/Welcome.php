@@ -52,4 +52,8 @@ class Welcome extends CI_Controller {
 			redirect('welcome');
 		}
 	}
+	public function logout(){
+		$this->session->unset_userdata('username');
+		redirect('welcome');
+	}
 }

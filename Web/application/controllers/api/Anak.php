@@ -22,7 +22,7 @@ class Anak extends REST_Controller {
         $sekarang = date_create($time);
         $lahir = date_create($tgl_lahir);
         $a = date_diff($lahir,$sekarang);
-        $umur = $a->format("%y");
+        $umur = $a->format("%m");
 
     $data = array(
       'id_anak'       =>$kodeanak,

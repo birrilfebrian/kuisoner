@@ -77,7 +77,8 @@ class Page extends CI_Controller {
 		}
 		public function aksipaket(){
 
-			$umur = $this->input->post('umur');
+			$umurawal = $this->input->post('umurawal');
+			$umurakhir = $this->input->post('umurakhir');
 			$jenis = $this->input->post('jenis');
 			$kodepkt = $this->Kode->buatkode('id_paket','tb_paket','PKT','3');
 			if($jenis == "error"){
@@ -87,7 +88,8 @@ class Page extends CI_Controller {
 				$data = array(
 					'id_paket' 	=> $kodepkt,
 					'jenis'		=> $jenis,
-					'umur' 		=> $umur
+					'umurawal' 		=> $umurawal,
+					'umurakhir'	=> $umurakhir
 				);
 				$query = $this->db->insert('tb_paket', $data);
 	
