@@ -22,7 +22,7 @@ class Anak extends REST_Controller {
         $sekarang = date_create($time);
         $lahir = date_create($tgl_lahir);
         $a = date_diff($lahir,$sekarang);
-        $umur = $a->format("%m");
+        $umur = $a->format("%m  ");
 
     $data = array(
       'id_anak'       =>$kodeanak,
@@ -59,6 +59,54 @@ class Anak extends REST_Controller {
       $response = [
         'status' => true,
         'data'   => $query->result_array()
+      ];
+    }else{
+      $response = [
+        'status' => false,
+        'message' => 'Belum ada anak'
+      ];
+    }
+
+    $this->response($response, 200);
+
+  }
+
+  public function liststimulasi_get(){
+
+    $query = $this->db->query('SELECT * FROM tb_anak where id_anak ="'.$this->get('id_anak').'"');
+    $ss = $query->row_array();
+    for ($i=0; $i<=48; $i+=6) {
+     if($i >= 6){
+          $umurakhir[] = $i;
+          $umurawal[] = $s;
+      }	
+      $s = $i;
+      }
+
+
+    if($ss['umur'] > $umurawal[0] && $ss['umur'] < $umurakhir[0] ){
+      $pesan ='umur '.$umurawal[0].' S/d '.$umurakhir[0];
+    }else if($ss['umur'] > $umurawal[1] && $ss['umur'] < $umurakhir[1] ){
+     $pesan ='umur '.$umurawal[1].' S/d '.$umurakhir[1]; 
+    }else if($ss['umur'] > $umurawal[2] && $ss['umur'] < $umurakhir[2] ){
+      $pesan ='umur '.$umurawal[2].' S/d '.$umurakhir[2];
+    }else if($ss['umur'] > $umurawal[3] && $ss['umur'] < $umurakhir[3] ){
+      $pesan ='umur '.$umurawal[3].' S/d '.$umurakhir[3];
+    }else if($ss['umur'] > $umurawal[4] && $ss['umur'] < $umurakhir[4] ){
+      $pesan ='umur '.$umurawal[4].' S/d '.$umurakhir[4];
+    }else if($ss['umur'] > $umurawal[5] && $ss['umur'] < $umurakhir[5] ){
+      $pesan ='umur '.$umurawal[5].' S/d '.$umurakhir[5];
+    }else if($ss['umur'] > $umurawal[6] && $ss['umur'] < $umurakhir[6] ){
+      $pesan ='umur '.$umurawal[6].' S/d '.$umurakhir[6];
+    }else if($ss['umur'] > $umurawal[7] && $ss['umur'] < $umurakhir[7] ){
+      $pesan ='umur '.$umurawal[7].' S/d '.$umurakhir[7];
+    }
+  
+
+    if($query->num_rows() > 0){
+      $response = [
+        'status' => true,
+        'data'   => $pesan,
       ];
     }else{
       $response = [

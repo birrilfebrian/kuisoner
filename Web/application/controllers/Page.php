@@ -124,4 +124,14 @@ class Page extends CI_Controller {
 				header('Location: ' . $_SERVER['HTTP_REFERER']);
 			}
 			}
+			public function ass(){
+				for ($i=0; $i<=48; $i+=6) {
+					if($i > 0 && $i <= 6){
+					  	echo "if(ss > $s dan < $i  ) <br>";
+					}else if($i >= 6){
+						echo "elseif(ss > $s dan < $i  ) <br>";
+					}	
+					$s = $i;
+				  }
+			}
 		}

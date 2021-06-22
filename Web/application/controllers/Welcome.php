@@ -56,4 +56,12 @@ class Welcome extends CI_Controller {
 		$this->session->unset_userdata('username');
 		redirect('welcome');
 	}
+	public function ass(){
+		echo "Sasd";
+		for ($x = 0; $x <= 36; $x) {
+			echo "The number is: $x <br>";
+			$s = $x+6;
+			echo "The numberss is: ".$s." <br>";
+		  } 
+	}
 }

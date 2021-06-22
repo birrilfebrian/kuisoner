@@ -18,13 +18,12 @@ class Paket extends REST_Controller {
 
       $query = $this->db->query('SELECT * FROM tb_paket 
       join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
-      Where tb_paket.jenis="'.$jenis.'" and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->result_array();
+      Where tb_paket.jenis="'.$jenis.'"  and ((select umur from tb_anak where id_anak = "'.$id_anak.'") BETWEEN tb_paket.umurawal AND  tb_paket.umurakhir) ')->result_array();
       $cek = $this->db->query('SELECT count(tb_soal.id_soal) as jumlah_soal, tb_paket.id_paket, tb_paket.jenis, tb_soal.id_soal, tb_soal.soal FROM tb_paket 
       join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
-      Where tb_paket.jenis="'.$jenis.'"  and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->row_array();
+      Where tb_paket.jenis="'.$jenis.'" and ((select umur from tb_anak where id_anak = "'.$id_anak.'") BETWEEN tb_paket.umurawal AND  tb_paket.umurakhir)')->row_array();
       
       if($cek['jumlah_soal'] > 0){
-        if($cc){
           for($i=0;$i<sizeof($query);$i++)
         {
           $query[$i]['jumlah_soal'] = $cek['jumlah_soal'];
@@ -33,16 +32,10 @@ class Paket extends REST_Controller {
             'status' => true,
             'data'   => $query,
           ];
-        }else{
-          $response = [
-            'status' => false,
-            'data'   => 'gagal'
-          ];
-        }
       }else{
         $response = [
           'status' => false,
-          'message' => "gagal"
+          'message' => $cek['jumlah_soal']
         ];
       }
   
@@ -51,18 +44,10 @@ class Paket extends REST_Controller {
   }
 
   public function hasil1_post(){
-    $jenis = $this->post('jenis');
+    // $jenis = $this->post('jenis');
     $id_anak = $this->post('id_anak');
     $kodehasil = $this->Kode->buatkode('id_hasil', 'tb_hasil', 'HS', '3');
 
-    $query = $this->db->query('SELECT * FROM tb_paket 
-    join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
-    Where tb_paket.jenis="'.$jenis.'" and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->result_array();
-    $cek = $this->db->query('SELECT count(tb_soal.id_soal) as jumlah_soal, tb_paket.id_paket, tb_paket.jenis, tb_soal.id_soal, tb_soal.soal FROM tb_paket 
-    join tb_soal ON tb_paket.id_paket = tb_soal.id_paket 
-    Where tb_paket.jenis="'.$jenis.'"  and tb_paket.umurawal > (select umur from tb_anak where id_anak = "'.$id_anak.'") and (select umur from tb_anak where id_anak = "'.$id_anak.'") <= tb_paket.umurakhir ')->row_array();
-    
-    if($cek['jumlah_soal'] > 0){
       $datah = array(
             'id_hasil' => $kodehasil,
             'id_anak'  => $id_anak,
@@ -72,14 +57,9 @@ class Paket extends REST_Controller {
           );
           $cc = $this->db->insert('tb_hasil', $datah);
       if($cc){
-        for($i=0;$i<sizeof($query);$i++)
-      {
-        $query[$i]['jumlah_soal'] = $cek['jumlah_soal'];
-        $query[$i]['id_hasil'] = $kodehasil;
-      }
         $response = [
           'status' => true,
-          'data'   => $query,
+          'data'   => $kodehasil,
         ];
       }else{
         $response = [
@@ -87,12 +67,6 @@ class Paket extends REST_Controller {
           'data'   => 'gagal'
         ];
       }
-    }else{
-      $response = [
-        'status' => false,
-        'message' => "gagal"
-      ];
-    }
 
     $this->response($response, 200);
 
@@ -128,10 +102,10 @@ class Paket extends REST_Controller {
     $id_hasil = $this->post('id_hasil');
     $jum = $this->db->query('SELECT count(id_hasil) as jumlah_soal FROM tb_detail_hasil 
       Where id_hasil = "'.$id_hasil.'"')->row_array();
-    $jwb = $this->db->query('SELECT jawaban FROM tb_detail_hasil 
-    Where id_hasil = "'.$id_hasil.'" and jawaban = "1"')->num_rows();
+    $jwb = $this->db->query('SELECT count(jawaban) FROM tb_detail_hasil 
+    Where id_hasil = "'.$id_hasil.'" and jawaban = "1"')->row_array();
 
-    $hasil =  $jwb / $jum['jumlah_soal'];
+    $hasil =  $jwb['jawaban'] / $jum['jumlah_soal'];
     $datad = array(
       'total_point'        => $hasil
     );
