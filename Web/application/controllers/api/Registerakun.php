@@ -65,8 +65,8 @@ public function index_post(){
     $config = array();
     $config['protocol'] = 'smtp';
     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-    $config['smtp_user'] = 'info.sipermen@gmail.com';
-    $config['smtp_pass'] = 'Zxcasdqwe123';
+    $config['smtp_user'] = 'tiperprem@gmail.com';
+    $config['smtp_pass'] = 'saya1010';
     $config['smtp_port'] = 465;
     $config['mailtype'] = 'html';
     $config['charset'] = 'utf-8';
