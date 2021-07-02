@@ -84,22 +84,22 @@ class Anak extends REST_Controller {
       }
 
 
-    if($ss['umur'] > $umurawal[0] && $ss['umur'] < $umurakhir[0] ){
-      $pesan ='umur '.$umurawal[0].' S/d '.$umurakhir[0];
-    }else if($ss['umur'] > $umurawal[1] && $ss['umur'] < $umurakhir[1] ){
-     $pesan ='umur '.$umurawal[1].' S/d '.$umurakhir[1]; 
-    }else if($ss['umur'] > $umurawal[2] && $ss['umur'] < $umurakhir[2] ){
-      $pesan ='umur '.$umurawal[2].' S/d '.$umurakhir[2];
-    }else if($ss['umur'] > $umurawal[3] && $ss['umur'] < $umurakhir[3] ){
-      $pesan ='umur '.$umurawal[3].' S/d '.$umurakhir[3];
-    }else if($ss['umur'] > $umurawal[4] && $ss['umur'] < $umurakhir[4] ){
-      $pesan ='umur '.$umurawal[4].' S/d '.$umurakhir[4];
-    }else if($ss['umur'] > $umurawal[5] && $ss['umur'] < $umurakhir[5] ){
-      $pesan ='umur '.$umurawal[5].' S/d '.$umurakhir[5];
-    }else if($ss['umur'] > $umurawal[6] && $ss['umur'] < $umurakhir[6] ){
-      $pesan ='umur '.$umurawal[6].' S/d '.$umurakhir[6];
-    }else if($ss['umur'] > $umurawal[7] && $ss['umur'] < $umurakhir[7] ){
-      $pesan ='umur '.$umurawal[7].' S/d '.$umurakhir[7];
+    if($ss['umur'] > 0 && $ss['umur'] < 3 ){
+      $pesan ='umur 0 S/d 3';
+    }else if($ss['umur'] > 3 && $ss['umur'] < 6 ){
+     $pesan ='umur 3 S/d 6 '; 
+    }else if($ss['umur'] > 6 && $ss['umur'] < 9 ){
+      $pesan ='umur 6 S/d 9';
+    }else if($ss['umur'] > 9 && $ss['umur'] < 12 ){
+      $pesan ='umur 9 S/d 12 ';
+    }else if($ss['umur'] > 12 && $ss['umur'] < 18 ){
+      $pesan ='umur 12 S/d 18';
+    }else if($ss['umur'] > 18 && $ss['umur'] < 24 ){
+      $pesan ='umur 18 S/d 24 ';
+    }else if($ss['umur'] > 24 && $ss['umur'] < 36 ){
+      $pesan ='umur 24 S/d 36 ';
+    }else if($ss['umur'] > 36 && $ss['umur'] < 48 ){
+      $pesan ='umur 36 S/d 48 ';
     }
   
 
