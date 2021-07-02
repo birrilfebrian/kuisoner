@@ -14,9 +14,10 @@ class Registerakun extends REST_Controller {
   }
 
 public function index_post(){
-    $username = $this->post('username');
+        $username = $this->post('username');
         $password = md5($this->input->post('password'));
         $email = $this->post('email');
+        $status = $this->post('status');
         $kode = $this->Kode->buatkode('id_user', 'tb_user', 'USR' , '4');
         date_default_timezone_set("Asia/Jakarta");
         $time =  Date('Y-m-d');
@@ -44,23 +45,11 @@ public function index_post(){
                 'email'         => $email,
                 'foto'          => 'default.jpeg',
                 'created_at'    => $time,
-                'is_aktif'      => 0
+                'is_aktif'      => 0,
+                'status'        => $status
             );
                 
                 $insert = $this->db->insert('tb_user', $data);
-
-                // $digits = 2;
-                // $num = rand(pow(10, $digits-1), pow(10, $digits)-1);
-                // $tokennya = uniqid(true);
-                // $user_token = [
-                //     'email' => $email,
-                //     'token' => $tokennya,
-                //     'v_num' => $num,
-                //     'date_created' => $time
-                // ];
-
-                // $cek2 = $this->db->insert('user_token', $user_token);
-                // $kirim = $this->_sendEmail($tokennya, $email, 'verify');
                 $kirim = $this->_sendEmail($email, 'verify');
                 
 

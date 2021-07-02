@@ -83,27 +83,24 @@ class Anak extends REST_Controller {
       $s = $i;
       }
 
-
-    if($ss['umur'] > 0 && $ss['umur'] < 3 ){
-      $pesan ='umur 0 S/d 3';
-    }else if($ss['umur'] > 3 && $ss['umur'] < 6 ){
-     $pesan ='umur 3 S/d 6 '; 
-    }else if($ss['umur'] > 6 && $ss['umur'] < 9 ){
-      $pesan ='umur 6 S/d 9';
-    }else if($ss['umur'] > 9 && $ss['umur'] < 12 ){
-      $pesan ='umur 9 S/d 12 ';
-    }else if($ss['umur'] > 12 && $ss['umur'] < 18 ){
-      $pesan ='umur 12 S/d 18';
-    }else if($ss['umur'] > 18 && $ss['umur'] < 24 ){
-      $pesan ='umur 18 S/d 24 ';
-    }else if($ss['umur'] > 24 && $ss['umur'] < 36 ){
-      $pesan ='umur 24 S/d 36 ';
-    }else if($ss['umur'] > 36 && $ss['umur'] < 48 ){
-      $pesan ='umur 36 S/d 48 ';
-    }
-  
-
     if($query->num_rows() > 0){
+      if($ss['umur'] > 0 && $ss['umur'] < 3 ){
+        $pesan ='0 - 3';
+      }else if($ss['umur'] > 3 && $ss['umur'] < 6 ){
+       $pesan ='3 - 6 '; 
+      }else if($ss['umur'] > 6 && $ss['umur'] < 9 ){
+        $pesan ='6 - 9';
+      }else if($ss['umur'] > 9 && $ss['umur'] < 12 ){
+        $pesan ='9 - 12 ';
+      }else if($ss['umur'] > 12 && $ss['umur'] < 18 ){
+        $pesan ='12 - 18';
+      }else if($ss['umur'] > 18 && $ss['umur'] < 24 ){
+        $pesan ='18 - 24 ';
+      }else if($ss['umur'] > 24 && $ss['umur'] < 36 ){
+        $pesan ='24 - 36 ';
+      }else if($ss['umur'] > 36 && $ss['umur'] < 48 ){
+        $pesan ='36 - 48 ';
+      }
       $response = [
         'status' => true,
         'data'   => $pesan,
@@ -111,7 +108,7 @@ class Anak extends REST_Controller {
     }else{
       $response = [
         'status' => false,
-        'message' => 'Belum ada anak'
+        'data' => 'Tidak ada stimulasi yang sesuai dengan umur anak!'
       ];
     }
 
