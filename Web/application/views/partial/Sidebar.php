@@ -9,12 +9,12 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item <?php if (strpos($_SERVER['REQUEST_URI'], "dashboard") !== false){ echo 'active';}else { echo ''; } ?> ">
+          <!-- <li class="nav-item <?php if (strpos($_SERVER['REQUEST_URI'], "dashboard") !== false){ echo 'active';}else { echo ''; } ?> ">
             <a class="nav-link" href="<?= base_url() ?>welcome/dashboard">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item <?php if (strpos($_SERVER['REQUEST_URI'], "manajemenuser") !== false){ echo 'active';}else { echo ''; } ?>">
             <a class="nav-link" href="<?= base_url() ?>page/manajemenuser">
               <i class="material-icons">supervisor_account</i>
