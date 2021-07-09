@@ -57,11 +57,21 @@ class Welcome extends CI_Controller {
 		redirect('welcome');
 	}
 	public function ass(){
-		echo "Sasd";
-		for ($x = 0; $x <= 36; $x) {
-			echo "The number is: $x <br>";
-			$s = $x+6;
-			echo "The numberss is: ".$s." <br>";
-		  } 
+
+		  for ($i=0; $i<=48; $i+=3) {
+			if($i >= 3){
+				 $umurakhir[] = $i;
+				 $umurawal[] = $s;
+			 }	
+			 $s = $i;
+			 if($s >= 12){
+				for ($s=0; $s<=48; $s+=6) {
+
+				}
+			 }
+			 }
+			 print_r($umurakhir);
+			 echo "<br>";
+			 print_r($umurawal);
 	}
 }

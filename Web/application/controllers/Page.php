@@ -43,6 +43,7 @@ class Page extends CI_Controller {
 		}else{
 			$data['listsoal'] = $this->db->query('SELECT * FROM tb_soal where id_paket ="'.$page.'"')->result();
 			$data['id']=$page;
+			$data['infopaket'] = $this->db->query('SELECT * FROM tb_paket where id_paket = "'.$page.'"')->row_array();
 			
 			$this->load->view('partial/header');
 			$this->load->view('partial/sidebar');
@@ -61,6 +62,86 @@ class Page extends CI_Controller {
 				$this->load->view('partial/navbar');
 				$this->load->view('page/v_tambahpaket');
 				$this->load->view('partial/footer');
+			}
+		}
+		public function editsoal(){
+			if(empty($this->session->userdata('username'))){
+				redirect('welcome');
+			}else{
+				$id_soal = $this->input->post('id_soal');
+				$soal = $this->input->post('soal');
+				echo $id_soal;
+				echo $soal;
+				// die();
+				$this->db->set('soal', $soal);
+				$this->db->where('id_soal', $id_soal);
+				$update = $this->db->update('tb_soal');
+				if($update){
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Mengedit Soal!</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error!</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}
+			}
+		}
+		public function editpaket(){
+			if(empty($this->session->userdata('username'))){
+				redirect('welcome');
+			}else{
+				$umurawal = $this->input->post('umurawal');
+				$umurakhir = $this->input->post('umurakhir');
+				$jenis = $this->input->post('jenis');
+				$id_paket = $this->input->post('id_paket');
+				echo $umurakhir;
+				echo $umurawal;
+				echo $jenis;
+				echo $id_paket;
+				// die();
+				$data = array(
+					'umurawal'  => $umurawal,
+					'umurakhir' => $umurakhir,
+					'jenis'		=> $jenis,
+				);
+				$this->db->set($data);
+				$this->db->where('id_paket', $id_paket);
+				$update = $this->db->update('tb_paket');
+				if($update){
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Mengedit Soal!</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error!</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}
+			}
+		}
+		public function hapussoal($page=""){
+			if(empty($this->session->userdata('username'))){
+				redirect('welcome');
+			}else{
+				$hapus = $this->db->query('DELETE FROM tb_soal WHERE id_soal="'.$page.'"');
+				if($hapus){
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Menghapus</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error!</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}
+			}
+		}
+		public function hapuspaket($page=""){
+			if(empty($this->session->userdata('username'))){
+				redirect('welcome');
+			}else{
+				$hapus1 = $this->db->query('DELETE FROM tb_soal WHERE id_paket="'.$page.'"');
+				$hapus = $this->db->query('DELETE FROM tb_paket WHERE id_paket="'.$page.'"');
+				if($hapus && $hapus1){
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Menghapus</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error!</div>');
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}
 			}
 		}
 		public function tambahsoal(){

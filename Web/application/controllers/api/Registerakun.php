@@ -31,11 +31,13 @@ public function index_post(){
                 'status' => false,
                 'message' => 'Username Telah Digunakan',
             ];
+            $this->response($response, 200);
         }else if ($cek2 > 0){
             $response = [
                 'status' => false,
                 'message' => 'Email Telah Digunakan',
             ];
+            $this->response($response, 200);
         }else{
             $data = array(
                 'id_user '      => $kode,
@@ -57,8 +59,8 @@ public function index_post(){
                     'status' => true,
                     'message' => 'Pendaftaran Akun Berhasil',
                 ];
+                $this->response($response, 200);
         }
-        $this->response($response, 200);
     }
     private function _sendEmail($email ,$type){
         
