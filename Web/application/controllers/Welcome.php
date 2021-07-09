@@ -23,18 +23,18 @@ class Welcome extends CI_Controller {
 		$this->load->view('login');
 	}
 
-	 public function dashboard()
-	{
-		if(empty($this->session->userdata('username'))){
-			redirect('welcome');
-		}else{
-			$this->load->view('partial/header');
-			$this->load->view('partial/sidebar');
-			$this->load->view('partial/navbar');
-			$this->load->view('dashboard');
-			$this->load->view('partial/footer');
-		}
-	}
+	//  public function dashboard()
+	// {
+	// 	if(empty($this->session->userdata('username'))){
+	// 		redirect('welcome');
+	// 	}else{
+	// 		$this->load->view('partial/header');
+	// 		$this->load->view('partial/sidebar');
+	// 		$this->load->view('partial/navbar');
+	// 		$this->load->view('dashboard');
+	// 		$this->load->view('partial/footer');
+	// 	}
+	// }
 
 	public function ceklogin(){
 		$user = $this->input->post('username');

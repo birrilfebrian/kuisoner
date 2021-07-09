@@ -30,7 +30,8 @@ class Anak extends REST_Controller {
       'nama_anak'     =>$this->post('nama_anak'),
       'tanggal_lahir' =>$tgl_lahir,
       'jenis_kelamin' =>$this->post('jenis_kelamin'),
-      'umur'          => $umur
+      'umur'          => $umur,
+      'status'        =>$this->post('status')
     );  
 
     $insanak = $this->db->insert('tb_anak', $data);
@@ -84,7 +85,7 @@ class Anak extends REST_Controller {
       }
 
     if($query->num_rows() > 0){
-      if($ss['umur'] > 0 && $ss['umur'] < 3 ){
+      if($ss['umur'] >= 0 && $ss['umur'] < 3 ){
         $pesan ='0 - 3';
       }else if($ss['umur'] > 3 && $ss['umur'] < 6 ){
        $pesan ='3 - 6 '; 
@@ -136,6 +137,27 @@ class Anak extends REST_Controller {
 
   }
   public function riwayat_get(){
+
+    $query = $this->db->query('SELECT * FROM tb_anak 
+    JOIN tb_hasil ON tb_anak.id_anak = tb_hasil.id_anak
+     where tb_anak.id_anak ="'.$this->get('id_anak').'" AND tb_hasil.id_user ="'.$this->get('id_user').'"');
+
+    if($query->num_rows() > 0){
+      $response = [
+        'status' => true,
+        'data'   => $query->result_array()
+      ];
+    }else{
+      $response = [
+        'status' => false,
+        'message' => 'Belum ada anak'
+      ];
+    }
+
+    $this->response($response, 200);
+
+  }
+  public function put_editprofil(){
 
     $query = $this->db->query('SELECT * FROM tb_anak 
     JOIN tb_hasil ON tb_anak.id_anak = tb_hasil.id_anak

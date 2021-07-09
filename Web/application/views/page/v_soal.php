@@ -1,3 +1,6 @@
+<?php 
+$jenispaket =  array('KPSP','TDD','TDL',);
+?>
 <body class="dark-edition">
     <div class="wrapper ">
         <div class="main-panel">
@@ -10,11 +13,13 @@
                                     <ul class="breadcrumb float-xl-left">
                                         <li class="nav-item">
                                         <h3 class="card-title">Paket Soal</h3>
+                                        <p><?= $jenispaket[$infopaket['jenis']]  ?> Umur (<?= $infopaket['umurawal'].' - '.$infopaket['umurakhir'].' Bulan' ?>)</p>
                                         <a href="<?= base_url() ?>page/tambahsoal?idp=<?= $id ?>"><button class="btn btn-sm btn-primary" style="background-color:#1a2035">Tambah Soal</button></a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="card-body">
+                                <?= $this->session->flashdata('message') ?>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead class="text-primary">
@@ -30,8 +35,39 @@
                                                 <tr>
                                                     <td><?= $no ?></td>
                                                     <td><?= $ls->soal ?></td>
-                                                    <td><a href="#"><button class="btn btn-sm btn-info"><i class="fa fa-search" aria-hidden="true"></i></button></a></td>
-                                                </tr>
+                                                    <td>
+                                                    <a href="#"><button data-toggle="modal" data-target="#edit<?= $ls->id_soal ?>" class="btn btn-sm btn-success"><i class="fa fa-edit" aria-hidden="true"></i></button></a>
+                                                    <a href="<?= base_url() ?>page/hapussoal/<?= $ls->id_soal ?>"><button  onClick="confirm('Anda Yakin Menghapus?')" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
+                                                    </td>
+                                                    </tr>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="edit<?= $ls->id_soal ?>" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Soal</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form action="<?= base_url()?>page/editsoal" method="post">
+                                                                    <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label for="exampleInputPassword1">Soal</label>
+                                                                                <input style="color:black" name="id_soal" type="hidden" value="<?= $ls->id_soal ?>" class="form-control" id="exampleInputPassword1">
+                                                                                <input style="color:black" name="soal" type="text" value="<?= $ls->soal ?>" class="form-control" id="exampleInputPassword1">
+                                                                            </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             <?php $no++;
                                                 }
                                             }else{
