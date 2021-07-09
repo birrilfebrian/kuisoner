@@ -156,26 +156,5 @@ class Anak extends REST_Controller {
     $this->response($response, 200);
 
   }
-  public function put_editprofil(){
-
-    $query = $this->db->query('SELECT * FROM tb_anak 
-    JOIN tb_hasil ON tb_anak.id_anak = tb_hasil.id_anak
-     where tb_anak.id_anak ="'.$this->get('id_anak').'" AND tb_hasil.id_user ="'.$this->get('id_user').'"');
-
-    if($query->num_rows() > 0){
-      $response = [
-        'status' => true,
-        'data'   => $query->result_array()
-      ];
-    }else{
-      $response = [
-        'status' => false,
-        'message' => 'Belum ada anak'
-      ];
-    }
-
-    $this->response($response, 200);
-
-  }
 
 }
