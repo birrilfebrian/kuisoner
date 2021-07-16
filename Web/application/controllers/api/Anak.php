@@ -15,12 +15,12 @@ class Anak extends REST_Controller {
   public function tambahanak_post(){
     
     $kodeanak = $this->Kode->buatkode('id_anak', 'tb_anak', 'ANK', '3');
-    $tgl_lahir = $this->post('tgl_lahir');
+    $tanggal_lahir = $this->post('tanggal_lahir');
     //cari umur
     date_default_timezone_set("Asia/Jakarta");
         $time =  Date('Y-m-d');
         $sekarang = date_create($time);
-        $lahir = date_create($tgl_lahir);
+        $lahir = date_create($tanggal_lahir);
         $a = date_diff($lahir,$sekarang);
         $umur = $a->format("%m  ");
 
@@ -28,10 +28,9 @@ class Anak extends REST_Controller {
       'id_anak'       =>$kodeanak,
       'id_user'       =>$this->post('id_user'),
       'nama_anak'     =>$this->post('nama_anak'),
-      'tanggal_lahir' =>$tgl_lahir,
+      'tanggal_lahir' =>$tanggal_lahir,
       'jenis_kelamin' =>$this->post('jenis_kelamin'),
       'umur'          => $umur,
-      'status'        =>$this->post('status')
     );  
 
     $insanak = $this->db->insert('tb_anak', $data);

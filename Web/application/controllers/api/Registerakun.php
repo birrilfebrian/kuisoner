@@ -65,8 +65,8 @@ public function index_post(){
     $config = array();
     $config['protocol'] = 'smtp';
     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-    $config['smtp_user'] = 'tiperprem@gmail.com';
-    $config['smtp_pass'] = 'saya1010';
+    $config['smtp_user'] = 'mamapintar878@gmail.com';
+    $config['smtp_pass'] = 'Ovv070499';
     $config['smtp_port'] = 465;
     $config['mailtype'] = 'html';
     $config['charset'] = 'utf-8';
@@ -75,10 +75,10 @@ public function index_post(){
     $this->email->set_newline("\r\n"); 
     $this->load->library('email', $config);   
 
-    $from = "Tes Anak";
-    $subject = "This The Te";
+    $from = "Smart Mommy";
+    $subject = "Verifikasi Akun";
     $data = array();
-    $this->email->from($from. 'Tes Anak');
+    $this->email->from($from);
     $this->email->to($email);
     $this->email->subject($subject);
         $this->email->message('
@@ -236,7 +236,7 @@ public function index_post(){
                     </tr>
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Hormat Kami,<br>Admin Simrs,</p>
+                            <p style="margin: 0;">Hormat Kami,<br>Admin Smart Mommy,</p>
                         </td>
                     </tr>
                 </table>
