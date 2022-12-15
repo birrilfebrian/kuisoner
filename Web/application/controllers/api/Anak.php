@@ -17,12 +17,19 @@ class Anak extends REST_Controller {
     $kodeanak = $this->Kode->buatkode('id_anak', 'tb_anak', 'ANK', '3');
     $tanggal_lahir = $this->post('tanggal_lahir');
     //cari umur
-    date_default_timezone_set("Asia/Jakarta");
-        $time =  Date('Y-m-d');
-        $sekarang = date_create($time);
-        $lahir = date_create($tanggal_lahir);
-        $a = date_diff($lahir,$sekarang);
-        $umur = $a->format("%m  ");
+		date_default_timezone_set("Asia/Jakarta");
+    $time =  Date('Y-m-d');
+		$date1 = strtotime($time); 
+		$date2 = strtotime($tanggal_lahir); 
+		$diff = abs($date2 - $date1); 
+		$years = floor($diff / (365*60*60*24)); 
+		$months = floor(($diff - $years * 365*60*60*24)/ (30*60*60*24)); 
+		if($years > 0){
+      $tahun = $years * 12;
+      $umur = $tahun + $months;
+    }else{
+      $umur = $months;
+    }
 
     $data = array(
       'id_anak'       =>$kodeanak,

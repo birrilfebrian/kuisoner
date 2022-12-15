@@ -67,7 +67,7 @@ public function index_post(){
     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
     $config['smtp_user'] = 'mamapintar878@gmail.com';
     $config['smtp_pass'] = 'Ovv070499';
-    $config['smtp_port'] = 465;
+    $config['smtp_port'] = 587;
     $config['mailtype'] = 'html';
     $config['charset'] = 'utf-8';
 
@@ -262,7 +262,7 @@ public function index_post(){
         // $token = $this->get('token');
 
         $reseller = $this->db->get_where('tb_user', ['email' => $email])->row_array();
-        if($reseller) {
+        if($reseller > 0) {
             $this->db->set('is_aktif', 1);
             $this->db->where('email', $email);
             $this->db->update('tb_user');

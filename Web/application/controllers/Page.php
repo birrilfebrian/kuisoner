@@ -25,10 +25,18 @@ class Page extends CI_Controller {
 	}
 	public function manajemenuser()
 	{
+		$status = $this->input->get('status');
+		// echo $a;
+		// die();
+
 		if(empty($this->session->userdata('username'))){
 			redirect('welcome');
 		}else{
-			$data['listuser'] = $this->db->query('SELECT * FROM tb_user')->result();
+			if(!empty($status)){
+				$data['listuser'] = $this->db->query('SELECT * FROM tb_user Where status ="'.$status.'"')->result();
+			}else{
+				$data['listuser'] = $this->db->query('SELECT * FROM tb_user ')->result();
+			}
 			
 			$this->load->view('partial/header');
 			$this->load->view('partial/sidebar');
@@ -117,6 +125,20 @@ class Page extends CI_Controller {
 			}
 		}
 	}
+	public function hapususer($page=""){
+		if(empty($this->session->userdata('username'))){
+			redirect('welcome');
+		}else{
+			$hapus = $this->db->query('DELETE FROM tb_user WHERE id_user="'.$page.'"');
+			if($hapus){
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Menghapus</div>');
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error!</div>');
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			}
+		}
+	}
 	public function hapuspaket($page=""){
 		if(empty($this->session->userdata('username'))){
 			redirect('welcome');
@@ -142,6 +164,62 @@ class Page extends CI_Controller {
 				$this->load->view('partial/navbar');
 				$this->load->view('page/v_tambahpaket');
 				$this->load->view('partial/footer');
+			}
+		}
+		public function tambahuser(){
+			if(empty($this->session->userdata('username'))){
+				redirect('welcome');
+			}else{
+				
+				$this->load->view('partial/header');
+				$this->load->view('partial/sidebar');
+				$this->load->view('partial/navbar');
+				$this->load->view('page/v_tambahuser');
+				$this->load->view('partial/footer');
+			}
+		}
+		public function prosesuser(){
+			if(empty($this->session->userdata('username'))){
+				redirect('welcome');
+			}else{
+				
+				$username = $this->input->post('username');
+				$password = md5($this->input->post('password'));
+				$email = $this->input->post('email');
+				$status = $this->input->post('status');
+				$kode = $this->Kode->buatkode('id_user', 'tb_user', 'USR' , '4');
+				date_default_timezone_set("Asia/Jakarta");
+				$time =  Date('Y-m-d');
+				$cek = $this->db->get_where('tb_user', ['username' => $username])->row_array();
+				$cek2 = $this->db->get_where('tb_user', ['email' => $email])->row_array();
+
+				
+
+				if ($cek > 0){
+					$response = '<div class="alert alert-danger" role="alert">Username Telah Digunakan</div>';
+				}else if ($cek2 > 0){
+					$response = '<div class="alert alert-danger" role="alert">Email Telah Digunakan</div>';
+				}else if($status == 'error'){
+					$response = '<div class="alert alert-danger" role="alert">Isi Level Terlbeih Dahulu</div>';
+				}else{
+					$data = array(
+						'id_user '      => $kode,
+						'nama'          => $this->input->post('nama'),
+						'username'      => $username,
+						'password'      => $password,
+						'email'         => $email,
+						'foto'          => 'default.jpeg',
+						'created_at'    => $time,
+						'is_aktif'      => 1,
+						'status'        => $status
+					);
+						
+						$insert = $this->db->insert('tb_user', $data);
+
+						$response = '<div class="alert alert-success" role="alert">Pendaftaran Akun Berhasil</div>';
+				}
+				$this->session->set_flashdata('pesan',$response);
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
 			}
 		}
 		public function tambahsoal(){
@@ -206,13 +284,6 @@ class Page extends CI_Controller {
 			}
 			}
 			public function ass(){
-				for ($i=0; $i<=48; $i+=6) {
-					if($i > 0 && $i <= 6){
-					  	echo "if(ss > $s dan < $i  ) <br>";
-					}else if($i >= 6){
-						echo "elseif(ss > $s dan < $i  ) <br>";
-					}	
-					$s = $i;
-				  }
+				
 			}
 		}

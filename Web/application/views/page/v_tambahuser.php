@@ -16,28 +16,48 @@
                                 <div class="card-body">
                                 <?= $this->session->flashdata('pesan') ?>
                                 <br>
-                                <form action="<?= base_url() ?>page/aksipaket" method="post">
+                                <form action="<?= base_url() ?>page/prosesuser" method="post">
                                     <div class="form-group">
-                                        <label style="color:white" for="exampleInputPassword1">Umur(bulan)</label> <br><br>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <input type="number" placeholder="Umur Awal" required class="form-control" id="exampleFormControlTextarea1" name="umurawal">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="number" placeholder="Umur Akhir" required class="form-control" id="exampleFormControlTextarea1" name="umurakhir">
-                                            </div>
+                                        <label style="color:black" for="exampleInputPassword1">Nama</label> <br>
+                                        <div class="col-6">
+                                            <input type="text" placeholder="Nama" required class="form-control"
+                                                id="exampleFormControlTextarea1" name="nama">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label style="color:black" for="exampleInputPassword1">Username</label> <br>
+                                        <div class="col-6">
+                                            <input type="text" placeholder="Username" required class="form-control"
+                                                id="exampleFormControlTextarea1" name="username">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label style="color:black" for="exampleInputPassword1">Password</label> <br>
+                                        <div class="col-6">
+                                            <input type="text" placeholder="Username" required class="form-control"
+                                                id="exampleFormControlTextarea1" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label style="color:black" for="exampleInputPassword1">Email</label> <br>
+                                        <div class="col-6">
+                                            <input type="text" placeholder="Username" required class="form-control"
+                                                id="exampleFormControlTextarea1" name="email">
                                         </div>
                                     </div>
                                     <div class="form-goup">
-                                    <select style="color:black" name="jenis" class="form-control">
-                                        <option value="error" selected>...</option>
-                                        <option value="0">KPSP</option>
-                                        <option value="1">TDD</option>
-                                        <option valuue="2">TDL</option>
-                                    </select>
+                                    <label style="color:black" for="exampleInputPassword1">Level</label> <br>
+                                    <div class="col-6">
+                                        <select style="color:black" name="status" class="form-control">
+                                            <option value="error" selected>...</option>
+                                            <option value="Dokter">Dokter</option>
+                                            <option value="Suster">Suster</option>
+                                        </select>
+                                    </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="<?= base_url()?>page/manajemensoal" ><button type="button" class="btn btn-primary">Kembali</button></a>
+                                    <a href="<?= base_url()?>page/prosesuser"><button type="button"
+                                            class="btn btn-primary">Kembali</button></a>
                                 </form>
                                 </div>
                             </div>

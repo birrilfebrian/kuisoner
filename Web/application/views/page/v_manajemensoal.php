@@ -1,7 +1,7 @@
 <?php 
 $jenispaket =  array('KPSP','TDD','TDL',);
 ?>
-<body class="dark-edition">
+<body class="white-edition">
     <div class="wrapper ">
         <div class="main-panel">
             <div class="content">
@@ -13,7 +13,7 @@ $jenispaket =  array('KPSP','TDD','TDL',);
                                     <ul class="breadcrumb float-xl-left">
                                         <li class="nav-item">
                                         <h3 class="card-title">Paket Soal</h3>
-                                        <a href="<?= base_url() ?>page/tambahpaket"><button class="btn btn-sm btn-primary" style="background-color:#1a2035">Tambah paket</button></a>
+                                        <a href="<?= base_url() ?>page/tambahpaket"><button class="btn btn-sm btn-primary" style="background-color:#5b6262">Tambah paket</button></a>
                                         </li>
                                     </ul>
                                 </div>

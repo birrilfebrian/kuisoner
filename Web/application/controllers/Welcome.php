@@ -20,7 +20,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('login');
+			$this->load->view('login');
+		
 	}
 
 	//  public function dashboard()
@@ -39,16 +40,18 @@ class Welcome extends CI_Controller {
 	public function ceklogin(){
 		$user = $this->input->post('username');
 		$password = $this->input->post('pass');
+		$a = sha1('coi/');
 		if($user == "admin"){
 			if($password == "admin"){
 				$this->session->set_userdata('username',$user);
-				redirect('page/manajemenuser');
+				redirect('page/manajemenuser?kiw='.$a.'');
 			}else{
 				$this->session->set_flashdata('pesan','<div class="text-center w-full p-t-25 p-b-10" >Password Salah!</div>');
 				redirect('welcome');
 			}
 		}else{
 			$this->session->set_flashdata('pesan','<div class="text-center w-full p-t-25 p-b-10" >Username Salah!</div>');
+			$a = 'kiw';
 			redirect('welcome');
 		}
 	}
@@ -57,11 +60,19 @@ class Welcome extends CI_Controller {
 		redirect('welcome');
 	}
 	public function ass(){
-		echo "Sasd";
-		for ($x = 0; $x <= 36; $x) {
-			echo "The number is: $x <br>";
-			$s = $x+6;
-			echo "The numberss is: ".$s." <br>";
+		$tanggal_lahir = "2017-09-28";
+				date_default_timezone_set("Asia/Jakarta");
+        $time =  Date('Y-m-d');
+
+
+		$date1 = strtotime($time); 
+		$date2 = strtotime($tanggal_lahir); 
+		$diff = abs($date2 - $date1); 
+		$years = floor($diff / (365*60*60*24)); 
+		$months = floor(($diff - $years * 365*60*60*24)
+                               / (30*60*60*24)); 
+		
+		$tahun = $years * 12;
+		echo $tahun, $months;
 		  } 
 	}
-}

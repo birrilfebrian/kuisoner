@@ -1,4 +1,4 @@
-<body class="dark-edition">
+<body class="white-edition">
     <div class="wrapper ">
         <div class="main-panel">
             <div class="content">
