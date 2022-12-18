@@ -42,14 +42,20 @@ class Suster extends REST_Controller {
   }
 
   public function getTemp_get(){
-    $id_anak = $this->post('id_anak');
-    $id_user = $this->post('id_user');
+    $id_anak = $this->get('id_anak');
+    $id_user = $this->get('id_user');
     $query = $this->db->query("SELECT * FROM temp_imunisasi WHERE id_anak = '$id_anak' AND id_user = '$id_user'")->result_array();
-
+    if($query){
       $response = [
         'status' => true,
         'data'   => $query
       ];
+    } else {
+      $response = [
+        'status' => false,
+        'data'   => 'no data'
+      ];
+    }
     $this->response($response, 200);
   }
 
