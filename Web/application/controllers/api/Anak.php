@@ -38,6 +38,7 @@ class Anak extends REST_Controller {
       'tanggal_lahir' =>$tanggal_lahir,
       'jenis_kelamin' =>$this->post('jenis_kelamin'),
       'umur'          => $umur,
+      'foto_anak'     => 'default.jpeg'
     );  
 
     $insanak = $this->db->insert('tb_anak', $data);
@@ -78,6 +79,26 @@ class Anak extends REST_Controller {
 
   }
 
+  public function listanakAll_get(){
+
+    $query = $this->db->query('SELECT * FROM tb_anak');
+
+    if($query->num_rows() > 0){
+      $response = [
+        'status' => true,
+        'data'   => $query->result_array()
+      ];
+    }else{
+      $response = [
+        'status' => false,
+        'message' => 'Belum ada anak'
+      ];
+    }
+
+    $this->response($response, 200);
+
+  }
+
   public function liststimulasi_get(){
 
     $query = $this->db->query('SELECT * FROM tb_anak where id_anak ="'.$this->get('id_anak').'"');
@@ -85,7 +106,7 @@ class Anak extends REST_Controller {
     for ($i=0; $i<=48; $i+=6) {
      if($i >= 6){
           $umurakhir[] = $i;
-          $umurawal[] = $s;
+          $umurawal[] = $ss;
       }	
       $s = $i;
       }
@@ -144,9 +165,19 @@ class Anak extends REST_Controller {
   }
   public function riwayat_get(){
 
-    $query = $this->db->query('SELECT * FROM tb_anak 
-    JOIN tb_hasil ON tb_anak.id_anak = tb_hasil.id_anak
-     where tb_anak.id_anak ="'.$this->get('id_anak').'" AND tb_hasil.id_user ="'.$this->get('id_user').'"');
+    $id_anak = $this->get('id_anak');
+    $id_user = $this->get('id_user');
+    
+    // $query = $this->db->query('SELECT * FROM tb_anak 
+    // JOIN tb_hasil ON tb_anak.id_anak = tb_hasil.id_anak
+    //  where tb_anak.id_anak ="'.$this->get('id_anak').'" AND tb_hasil.id_user ="'.$this->get('id_user').'"');
+
+    $query = $this->db->query("SELECT H.id_hasil, H.id_anak, A.nama_anak, A.tanggal_lahir, H.total_point, A.foto_anak, S.soal, DT.jawaban, H.tips_dokter
+    FROM tb_hasil H
+    INNER JOIN tb_anak A ON H.id_anak = A.id_anak
+    INNER JOIN tb_detail_hasil DT ON H.id_hasil = DT.id_hasil
+    INNER JOIN tb_soal S ON DT.id_soal = S.id_soal
+    WHERE H.id_anak = '$id_anak' AND H.id_user = '$id_user'");
 
     if($query->num_rows() > 0){
       $response = [
@@ -163,6 +194,34 @@ class Anak extends REST_Controller {
     $this->response($response, 200);
 
   }
+
+  public function riwayatImun_get(){
+
+    $id_anak = $this->get('id_anak');
+
+    $query = $this->db->query("SELECT H.id_imunisasi, H.id_anak, H.berat_anak, H.tinggi_anak, CAST(H.dateCreated AS DATE) AS tgl_imunisasi, D.nama_imunisasi
+    FROM tb_imunisasi H
+    INNER JOIN tb_detail_imunisasi D ON H.id_imunisasi = D.id_imunisasi
+    WHERE H.id_anak = '$id_anak'
+    ORDER BY H.dateCreated");
+
+    if($query->num_rows() > 0){
+      $response = [
+        'status' => true,
+        'data'   => $query->result_array()
+      ];
+    }else{
+      $response = [
+        'status' => false,
+        'message' => 'Belum ada anak'
+      ];
+    }
+
+    $this->response($response, 200);
+
+  }
+
+
   public function put_editprofil(){
 
     $query = $this->db->query('SELECT * FROM tb_anak 
@@ -182,7 +241,6 @@ class Anak extends REST_Controller {
     }
 
     $this->response($response, 200);
-
   }
 
 }

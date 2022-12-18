@@ -59,6 +59,7 @@ class Login extends REST_Controller
             'foto' => $output->foto,
             'created_at' => $output->created_at,
             'is_aktif' => $output->is_aktif,
+            'status' => $output->status,
             'pesan' => 'Selamat Datang',
           ];
           $message = [
