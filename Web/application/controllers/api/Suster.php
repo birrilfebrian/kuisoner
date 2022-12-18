@@ -110,7 +110,7 @@ class Suster extends REST_Controller {
         $this->db->query("INSERT INTO tb_detail_imunisasi(id_imunisasi, nama_imunisasi) 
                           SELECT '$id_imunisasi', nama_imunisasi FROM temp_imunisasi
                           WHERE id_anak = '$id_anak' AND id_user = '$id_user'");
-        $this->db->query("DELETE temp_imunisasi WHERE id_anak = '$id_anak' AND id_user = '$id_user'");
+        $this->db->query("DELETE FROM temp_imunisasi WHERE id_anak = '$id_anak' AND id_user = '$id_user'");
         $response = [
           'status' => true,
           'message' => 'Imunisasi Berhasil Ditambahkan',
