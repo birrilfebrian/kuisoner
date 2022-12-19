@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/drawable-hdpi/ic_background_top.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/drawable-xxhdpi-v21/ripple_effect_gray.xml" value="0.1935" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/drawable-xxhdpi/ripple_effect_gray.xml" value="0.239" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/drawable-xxxhdpi/ic_background_top.xml" value="0.239" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/drawable-xxxhdpi/ic_background_top2.xml" value="0.239" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_hasil_soal.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_history_imunisasi.xml" value="0.3484375" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_history_questioner.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_home.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_home_doctor.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_list_anak_doctor.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_pilih_anak.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_pilih_anak_riwayat.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_riwayat.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/activity_soal.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/fragment_anak.xml" value="0.22" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/fragment_lainnya.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/list_anak.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/list_detail_kuisoner.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/MAMA-PINTAR/SmartMommy/app/src/main/res/layout/list_riwayat.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/drawable-v24/buttonleft_background.xml" value="0.1225" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/drawable-v24/dialog_background.xml" value="0.1225" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/drawable-v24/error_background.xml" value="0.1225" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_detail_anak.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_edit_profil.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_hasil_soal.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_history_imunisasi.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_history_questioner.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_home_doctor.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_home_suster.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_input_vaccine.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_insert_vaccine.xml" value="0.17581187010078386" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_list_anak_doctor.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_register.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_riwayat.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_soal.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/activity_tambah_anak.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/fragment_anak.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/fragment_lainnya.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/layout_insert_row.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/list_detail_imunisasi.xml" value="0.4189473684210526" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/list_detail_kuisoner.xml" value="0.3625" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/list_imunisasi.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/layout/list_riwayat.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/menu/bottom_navigation.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1225" />
+        <entry key="..\:/Users/LENOVO/kuisoner/SmartMommy/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1225" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

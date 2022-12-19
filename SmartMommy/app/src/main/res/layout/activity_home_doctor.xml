@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_accsreg"
+    tools:context=".doctor.HomeDoctor">
+
+    <TextView
+        android:id="@+id/namasaya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui"
+        android:text="Hello Doctor,"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/namadoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui"
+        android:text="Hello Doctor,"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/namasaya"
+        app:layout_constraintTop_toBottomOf="@+id/namasaya" />
+
+    <ImageView
+        android:id="@+id/imgLogout"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_baseline_logout_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cvHistoryQuestionnaire"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/historykuis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namadoctor" />
+
+    <TextView
+        android:id="@+id/tvTitleVaccine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neutrifpro_medium"
+        android:text="History Questionere"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/cvHistoryQuestionnaire"
+        app:layout_constraintStart_toStartOf="@+id/cvHistoryQuestionnaire"
+        app:layout_constraintTop_toBottomOf="@+id/cvHistoryQuestionnaire" />
+
+    <ImageView
+        android:id="@+id/cvHistoryImmun"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/historyvaccine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleVaccine" />
+
+    <TextView
+        android:id="@+id/tvTitleHistoVaccine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neutrifpro_medium"
+        android:text="History Immunization"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/cvHistoryImmun"
+        app:layout_constraintStart_toStartOf="@+id/cvHistoryImmun"
+        app:layout_constraintTop_toBottomOf="@+id/cvHistoryImmun" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
